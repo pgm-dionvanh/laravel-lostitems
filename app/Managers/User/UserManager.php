@@ -12,19 +12,16 @@ class UserManager {
 
     public function __construct(
         private UserRepository $userRepository,     
-    ) {
-    }
+    ) {}
+    
     public function attemptLogin(string $username, string $password): ?User
     {
         if (
             auth()->once(['email' => $username, 'password' => $password])
         ) {
             $user = auth()->user();
-
             return $user;
-
         }
-
         return null;
     }
 
@@ -32,7 +29,7 @@ class UserManager {
     {
         $user = $this->userRepository->create($user);
 
-       return $user;
+        return $user;
     }
 
 }
