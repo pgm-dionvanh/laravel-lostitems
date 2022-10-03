@@ -21,11 +21,6 @@ class NewUserDto
         return $this->password;
     }
 
-    public function getGender(): string
-    {
-        return $this->gender;
-    }
-
     public function getUserAgent(): string
     {
         return $this->userAgent;
