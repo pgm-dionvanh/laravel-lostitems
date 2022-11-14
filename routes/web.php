@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
@@ -15,19 +16,24 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+
+
 Route::get('/', [MainController::class, 'show']);
 Route::get('/login', [MainController::class, 'login']);
 Route::get('/register', [MainController::class, 'register']);
 
 Route::get('/info/{id}', [MainController::class, 'info']);
 
-/* Auth */
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
+/* Auth */
 Route::group(['middleware' => ['auth']], function() {
-    /**
-     * Logout Routes
-     */
+    Route::get('/dashboard', [MainController::class, 'dashboard']);
+    Route::post('/claimItem/{id}', [MainController::class, 'claim']);
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout.perform');
 });
+
+/* Admin */
+Route::get('/admin/dashboard', [AdminController::class, 'show']);

@@ -26,14 +26,12 @@ class UserRepository extends BaseRepository
 
     public function create(NewUserDto $user): User
     {
-        $ip = config('services.cloudflare.enabled')
-            ? request()->header('CF_CONNECTING_IP')
-            : request()->ip();
-
-        return $this->getModel()->create([
+        $user = $this->getModel()->create([
             'email' => $user->getEmail(),
             'password' => bcrypt($user->getPassword()),
             'account_created' => time(),
         ]);
+
+        return $user;
     }
 }

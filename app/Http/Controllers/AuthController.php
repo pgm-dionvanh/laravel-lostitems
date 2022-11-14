@@ -35,7 +35,7 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request): JsonResponse
+    public function register(Request $request)
     {
         
         $loginDto = $this->userManager->createUser(new NewUserDto(
@@ -44,12 +44,7 @@ class AuthController extends Controller
             $request->userAgent()
         ));
 
-        return response()->json([
-            'data' => [
-                'user' => 'test',
-                'access_token' => 'test'
-            ]
-        ]);
+        return $this->authenticated($request, $loginDto);
     }
 
     /**

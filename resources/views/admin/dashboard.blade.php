@@ -2,12 +2,11 @@
 
 @section('logo', 'Lostitems')
 
-@include('includes.header')
+@include('admin.includes.header')
 
-@include('components.list')
+@include('admin.components.overview')
 
 @yield('content')
-
 
 @include('includes.footer')
 

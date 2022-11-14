@@ -16,11 +16,9 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use HasFactory;
-    use Notifiable;
-    use SoftDeletes;
+    use HasFactory, Notifiable;
 
-    protected $fillable = ['username', 'real_name', 'password', 'email', 'mail_verified', 'account_created'];
+    protected $fillable = ['username', 'real_name', 'password', 'email', 'mail_verified', 'account_created', 'admin'];
 
     protected $hidden = [
         'password',
@@ -31,7 +29,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-  
     public function findForPassport(string $identifier): User | Builder | null
     {
         return $this->newQuery()

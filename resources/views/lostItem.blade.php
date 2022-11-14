@@ -19,7 +19,10 @@
       </h1>
       <p class="mb-8 leading-relaxed">{{ $lostItem->item_description }}</p>
       <div class="flex justify-center">
+      <form action="/claimItem/{{ $lostItem->id }}" method="POST">
+      @csrf
         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Claim</button>
+      </form>
       </div>
     </div>
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">

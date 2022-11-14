@@ -1,19 +1,27 @@
+@section('title', 'Lost items')
+
+@section('logo', 'Lostitems')
+
+@include('includes.header')
+
+@yield('content')
+
+@include('includes.footer')
+
+
+
+
+
 <section id="content">
 <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
-    @if ($lostItems->count() > 0)
-    @foreach ($lostItems as $lostItem)
+    @if ($claimedItems->count() > 0)
+    @foreach ($claimedItems as $claimedItem)
         <div class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-            <a href="/info/{{ $lostItem->id }}" class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
-                <div class="relative pb-48 bg-gray-800 overflow-hidden flex justify-center">
-                    <img class="inset-0 h-full object-cover mb-2 mt-2"
-                        src="{{ $lostItem->item_picture }}"
-                        alt="">
-                </div>
+            <a class="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
+            
                 <div class="p-4">
-                    <span
-                    <h2 class="mt-2 mb-2  font-bold">{{ $lostItem->item_name }}</h2>
-                    <p class="text-sm">{{ $lostItem->item_description }}</p>
+                    <h2 class="mt-2 mb-2  font-bold">Item id: {{ $claimedItem->lostitems_id }}</h2>
                 </div>
                 <div class="p-4 border-t border-b text-xs text-gray-700">
                     <span class="flex items-center mb-1">
@@ -27,3 +35,5 @@
             @endif
 </div>
 </section>
+
+

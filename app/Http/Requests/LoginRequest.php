@@ -51,7 +51,7 @@ class LoginRequest extends FormRequest
             ];
         }
 
-        return $this->only('username', 'password');
+        return $this->only('email', 'password');
     }
 
     /**
